@@ -25,7 +25,7 @@ app.get("/webhook", function (req, res) {
 
 app.post("/webhook", function (request, response) {
   console.log("Incoming webhook: " + JSON.stringify(request.body));
-  console.log("Message data ", Buf request.body.message.data)
+  console.log("Message data ", new Buffer.from(request.body.message.data, 'base64').toString('utf8') )
   response.sendStatus(200);
 });
 
